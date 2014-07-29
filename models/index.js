@@ -47,6 +47,8 @@ db.post.create({content: "Learning sequelize"})
     });
   });
 
+
+
 module.exports = lodash.extend({
   sequelize: sequelize,
   Sequelize: Sequelize
