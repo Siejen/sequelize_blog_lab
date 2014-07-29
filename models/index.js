@@ -23,31 +23,43 @@ Object.keys(db).forEach(function(modelName) {
   }
 })
 
-// // Associations
-db.author.hasMany(db.post);
-db.post.belongsTo(db.author);
+// Associations
+db.author.hasMany(db.post   /*, { foreignKey: 'authorId' , foreignKeyConstraint:true  }*/ );
+db.post.belongsTo(db.author /*, { foreignKey: 'postId'   , foreignKeyConstraint:true  }*/ );
+
 
 // db.post.create({content: "Hello World"})
 //   .success(function(postObj){
 //     console.log("postObj: ", postObj);
 //   })
 
-// db.author.create({name: "F.Scott Fitzgerald"})
+// db.author.create({name: "Harper Lee"})
 //   .success(function(authorObj){
 //     console.log("authorObj: ", authorObj);
 //   })
 
-db.post.create({content: "Learning sequelize"})
-  .success(function(post){
-    db.author.find(1).success(function(author){
-      author.setPosts([post])
-      .success(function(author){
-        console.log("Author: " + author + "Posts: " + post);
-      })
+
+db.post.create({content: "Loves The Oatmeal"})
+  .success(function(post) {
+    
+    var theAuthorId = 3;
+
+    db.post.findAll( { where: { authorId: theAuthorId } } ).success(function( posts ) {
+      db.author.find( theAuthorId ).success(function(author){
+        
+        var allPosts = posts.concat( post );
+        
+        author.setPosts( allPosts )
+        .success(function(author){
+          console.log("Author: " + author + "Posts: " + post);
+        })
+      });
     });
   });
 
-
+// db.post.findAll().success(function(posts){
+//   console.log(post);  
+//   }); 
 
 module.exports = lodash.extend({
   sequelize: sequelize,
