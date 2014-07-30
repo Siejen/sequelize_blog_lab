@@ -24,8 +24,8 @@ Object.keys(db).forEach(function(modelName) {
 })
 
 // Associations
-db.author.hasMany(db.post   /*, { foreignKey: 'authorId' , foreignKeyConstraint:true  }*/ );
-db.post.belongsTo(db.author /*, { foreignKey: 'postId'   , foreignKeyConstraint:true  }*/ );
+db.author.hasMany(db.post);
+db.post.belongsTo(db.author);
 
 
 // db.post.create({content: "Hello World"})

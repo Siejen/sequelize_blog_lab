@@ -4,8 +4,8 @@
   </head>
   <body>
     <% posts.forEach(function(post) {%>
-      <%= post.dataValues.createdAt %><br/>
       <%= post.dataValues.content %><br/>
+      <%= post.dataValues.createdAt %><br/>
       <br/>
     <% }) %>
   </body>
