@@ -44,18 +44,18 @@ db.post.create({content: "Loves The Oatmeal"})
     
     var theAuthorId = 3;
 
-    db.post.findAll( { where: { authorId: theAuthorId } } ).success(function( posts ) {
+    //db.post.findAll( { where: { authorId: theAuthorId } } ).success(function( posts ) {
       db.author.find( theAuthorId ).success(function(author){
         
-        var allPosts = posts.concat( post );
-        
-        author.setPosts( allPosts )
+        //var allPosts = posts.concat( post );
+        //author.setPosts( allPosts )
+
+        author.addPost(post)
         .success(function(author){
           console.log("Author: " + author + "Posts: " + post);
-        })
-      });
-    });
+    })
   });
+});
 
 // db.post.findAll().success(function(posts){
 //   console.log(post);  

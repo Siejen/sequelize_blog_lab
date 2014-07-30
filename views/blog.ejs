@@ -1,0 +1,12 @@
+<!DOCTYPE>
+<html>
+  <head>
+  </head>
+  <body>
+    <% posts.forEach(function(post) {%>
+      <%= post.dataValues.createdAt %><br/>
+      <%= post.dataValues.content %><br/>
+      <br/>
+    <% }) %>
+  </body>
+</html>
