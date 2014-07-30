@@ -8,7 +8,10 @@ app.use(bodyParser.urlencoded());
 
 app.get("/blog", function(req, res){
   db.post.findAll().success(function(posts){
-    res.render('blog', {posts: posts})
+  	db.author.findAll().success(function(authors){
+ 		console.log(authors[0].dataValues.name);
+ 		res.render('blog', {posts: posts, authors: authors}) 		
+  	})
   })
 })
 

@@ -6,6 +6,7 @@
     <% posts.forEach(function(post) {%>
       <%= post.dataValues.content %><br/>
       <%= post.dataValues.createdAt %><br/>
+      <%= authors[post.dataValues.authorId].dataValues.name %><br/>
       <br/>
     <% }) %>
   </body>
