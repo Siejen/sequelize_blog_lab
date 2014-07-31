@@ -1,8 +1,16 @@
 <!DOCTYPE>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
   </head>
   <body>
+    <h1>Welcome to our Blog</h1>
+      <a href="/signup">Sign up </a>
+      &nbsp
+      <a href="/login">Log in</a>
+      <br/>
+      <br/>      
     <% posts.forEach(function(post) {%>
       <%= post.dataValues.content %><br/>
       <%= post.dataValues.createdAt %><br/>
